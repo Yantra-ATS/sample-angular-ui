@@ -25,7 +25,7 @@
           "options": {
             "outputPath": "dist/my-project",
             "index": "src/index.html",
-            "main": "src/main.ts",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -33,8 +33,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "output": "/"
+                "input": "public"
               }
             ],
             "styles": [
@@ -49,12 +48,6 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -67,43 +60,24 @@
                   "maximumError": "4kB"
                 }
               ],
-              "outputHashing": "all",
-              "optimization": true,
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
-              "sourceMap": true,
               "extractLicenses": false,
-              "namedChunks": true,
-              "vendorChunk": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.ts"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "my-project:build"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "my-project:build:production"
+              "buildTarget": "my-project:build:production"
             },
             "development": {
-              "browserTarget": "my-project:build:development"
+              "buildTarget": "my-project:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -122,34 +96,13 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public",
-                "output": "/"
+                "input": "public"
               }
             ],
             "styles": [
               "src/styles.css"
             ],
             "scripts": []
-          }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/my-project-server",
-            "main": "src/main.server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false
-            }
           }
         }
       }
