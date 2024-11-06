@@ -1,0 +1,41 @@
+name: Deploy Angular App to AWS
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to match the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20' # Use the version compatible with your Angular project
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build Angular app
+      run: npm run build -- --prod
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: 'us-east-1' # Replace with your AWS region
+
+    - name: Deploy to S3
+      run: |
+        aws s3 sync ./dist/my-project s3://sampleangularapp --delete
+        aws s3 cp ./dist/my-project/index.html s3://sampleangularapp/index.html --cache-control no-cache
+      # Replace YOUR_APP_NAME with the name of your Angular app's build output folder, typically the same as the Angular project name
+      # Replace YOUR_BUCKET_NAME with your actual S3 bucket name
+
+ 
