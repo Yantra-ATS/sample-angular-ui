@@ -33,8 +33,8 @@ jobs:
 
     - name: Deploy to S3
       run: |
-        aws s3 sync ./dist/my-project s3://sampleangularapp --delete
-        aws s3 cp ./dist/my-project/index.html s3://sampleangularapp/index.html --cache-control no-cache
+        aws s3 sync ./dist/my-project/browser s3://sampleangularapp --delete
+        aws s3 cp ./dist/my-project/browser/index.html s3://sampleangularapp/index.html --cache-control no-cache
       # Replace YOUR_APP_NAME with the name of your Angular app's build output folder, typically the same as the Angular project name
       # Replace YOUR_BUCKET_NAME with your actual S3 bucket name
 
