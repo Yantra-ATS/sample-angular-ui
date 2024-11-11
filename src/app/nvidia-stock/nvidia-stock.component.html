@@ -1,0 +1,4 @@
+<h2>NVIDIA Stock Prices Around Earnings</h2>
+<input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+
+<p-chart type="line" *ngIf="chartData" [data]="chartData" [options]="chartOptions"></p-chart>
