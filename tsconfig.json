@@ -24,10 +24,15 @@
       "dom"
     ]
   },
+  "typeRoots": ["node_modules/@types", "src"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/google.d.ts" // or wherever you placed your declaration file
+  ]
 }

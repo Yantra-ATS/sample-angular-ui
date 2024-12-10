@@ -21,4 +21,5 @@ export class ExcelService {
       fileReader.readAsArrayBuffer(file);
     });
   }
+
 }

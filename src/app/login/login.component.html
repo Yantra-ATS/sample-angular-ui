@@ -1,0 +1,7 @@
+<div *ngIf="!loggedIn; else loggedInTemplate">
+  <button (click)="signInWithGoogle()">Sign in with Google</button>
+</div>
+<ng-template #loggedInTemplate>
+  <h3>Welcome, {{ user.name }}</h3>
+  <button (click)="signOut()">Sign out</button>
+</ng-template>

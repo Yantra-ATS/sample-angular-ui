@@ -1,4 +1,4 @@
-<h2>NVIDIA Stock Prices Around Earnings</h2>
-<input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" />
+<div id="google-signin-button"></div>
 
-<p-chart type="line" *ngIf="chartData" [data]="chartData" [options]="chartOptions"></p-chart>
+<button class="btn btn-outline-danger btn-lg btn-block" (click)="redirectToGoogleAuth()">
+  <i class="fab fa-google"></i> Iniciar Sesión con Google</button>
